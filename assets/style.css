@@ -130,3 +130,12 @@ footer p{margin:0 0 .6rem}
 .pred-score small{font:600 .8rem "Inter",system-ui,sans-serif;color:#c9d2f2}
 .pred-quip{font-style:italic;margin:.2rem 0 .8rem;color:#e7ebfa}
 .pred-record{margin:0;font:600 .78rem "Inter",system-ui,sans-serif;color:#c9d2f2;border-top:1px solid rgba(255,255,255,.15);padding-top:.7rem}
+
+/* Compact grumpiness strip (under the byline) */
+.grogne{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.2rem;margin:.9rem 0 0;padding:.55rem .8rem;border:1px solid var(--rule);border-radius:12px;background:var(--card);font:500 .8rem "Inter",system-ui,sans-serif;color:var(--muted)}
+.grogne b{color:var(--ink)}
+.grogne-meter{display:flex;align-items:center;gap:.6rem;flex:1 1 260px;min-width:0}
+.grogne-label{white-space:nowrap}
+.grogne-bar{position:relative;flex:1;height:8px;border-radius:999px;overflow:hidden;background:linear-gradient(90deg,#3a7d44 0%,#e0b100 45%,#e06a00 70%,#c8102e 100%);min-width:70px}
+.grogne-bar i{position:absolute;top:0;bottom:0;right:0;background:var(--box);border-left:2px solid var(--ink)}
+.grogne-facts{display:flex;flex-wrap:wrap;gap:.2rem .8rem;margin:0}

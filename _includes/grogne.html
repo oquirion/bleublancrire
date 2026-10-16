@@ -1,0 +1,44 @@
+{%- comment -%}
+  Grumpiness index for column include.p: its game + the 4 previous games of the same kind
+  (preseason with preseason, season/playoffs together). Sets g_level, g_face, g_fr, g_en, g_n.
+  With include.render = true, also prints the compact strip (bar + MTL record).
+{%- endcomment -%}
+{%- assign gp = include.p -%}
+{%- if gp.game.type == 1 -%}{%- assign g_pre = true -%}{%- else -%}{%- assign g_pre = false -%}{%- endif -%}
+{%- assign g_total = 0 -%}{%- assign g_n = 0 -%}{%- assign g_found = false -%}
+{%- for q in site.posts -%}
+  {%- if q.url == gp.url -%}{%- assign g_found = true -%}{%- endif -%}
+  {%- if g_found and g_n < 5 -%}
+    {%- if q.game.type == 1 -%}{%- assign q_pre = true -%}{%- else -%}{%- assign q_pre = false -%}{%- endif -%}
+    {%- if q_pre == g_pre -%}
+      {%- include mood.html game=q.game -%}
+      {%- assign g_total = g_total | plus: mood_pts -%}{%- assign g_n = g_n | plus: 1 -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if g_n < 1 -%}{%- assign g_n = 1 -%}{%- endif -%}
+{%- assign g_level = g_total | times: 100 | divided_by: 25 | divided_by: g_n -%}
+{%- if g_level > 100 -%}{%- assign g_level = 100 -%}{%- endif -%}
+{%- if g_level < 20 -%}{%- assign g_fr = "Serein" -%}{%- assign g_en = "Serene" -%}{%- assign g_face = "content" -%}
+{%- elsif g_level < 40 -%}{%- assign g_fr = "Méfiant" -%}{%- assign g_en = "Suspicious" -%}{%- assign g_face = "mefiant" -%}
+{%- elsif g_level < 60 -%}{%- assign g_fr = "Grognon" -%}{%- assign g_en = "Grumpy" -%}{%- assign g_face = "boude" -%}
+{%- elsif g_level < 80 -%}{%- assign g_fr = "Furieux" -%}{%- assign g_en = "Fuming" -%}{%- assign g_face = "furieux" -%}
+{%- else -%}{%- assign g_fr = "Volcanique" -%}{%- assign g_en = "Volcanic" -%}{%- assign g_face = "furieux" -%}{%- endif -%}
+{%- if include.render -%}
+<div class="grogne">
+  <div class="grogne-meter" title="{{ g_n }}">
+    <span class="grogne-label"><span lang="fr">Indice de grogne</span><span lang="en">Grumpiness</span> <b>{{ g_level }}</b>/100 · <b><span lang="fr">{{ g_fr }}</span><span lang="en">{{ g_en }}</span></b></span>
+    <span class="grogne-bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ g_level }}"><i style="left: {{ g_level }}%"></i></span>
+  </div>
+  {%- if gp.context -%}
+  <p class="grogne-facts">
+    <span>MTL <b>{{ gp.context.record }}</b></span>
+    <span><b>{{ gp.context.points }}</b> pts</span>
+    <span><b>{{ gp.context.division_rank }}<span lang="fr">e</span><span lang="en">th</span></b> Atlantique</span>
+    <span><b><span lang="fr">{{ gp.context.streak_fr }}</span><span lang="en">{{ gp.context.streak_en }}</span></b></span>
+  </p>
+  {%- elsif g_pre -%}
+  <p class="grogne-facts"><span lang="fr">Match préparatoire : ça ne compte pas. Gaston grogne quand même.</span><span lang="en">Preseason: it doesn't count. Gaston grumbles anyway.</span></p>
+  {%- endif -%}
+</div>
+{%- endif -%}

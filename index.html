@@ -3,7 +3,6 @@ layout: default
 ---
 {% assign latest = site.posts.first %}
 {% if latest %}
-{% include meter.html %}
 {% include article.html p=latest body=latest.content %}
 {% assign older = site.posts | slice: 1, 5 %}
 {% if older.size > 0 %}

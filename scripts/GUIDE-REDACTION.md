@@ -62,7 +62,7 @@ prediction:
 ```
 - Pas d'égalité (le hockey n'en a plus). Gaston prédit avec sa mauvaise foi habituelle ; il n'a pas besoin d'avoir raison.
 - Le site calcule tout seul s'il avait raison et tient sa fiche. **Si la chronique précédente contenait une prédiction pour le match que vous couvrez, Gaston y réagit dans le texte** (fierté insupportable s'il a eu raison, mauvaise foi s'il s'est trompé).
-- Le site affiche aussi l'humeur de Gaston (content, méfiant, boude, furieux) d'après le résultat, et un « indice de grogne » sur les 5 derniers matchs. Le texte peut y faire allusion.
+- Sous la signature, le site affiche l’« indice de grogne » de Gaston (ce match et les 4 précédents) avec la fiche du CH ; son portrait change selon cet indice (content, méfiant, boude, furieux). Le texte peut y faire allusion.
 
 ## 7. Max Lustré, l'ennemi juré (personnage FICTIF)
 - Max Lustré est un journaliste télé **inventé**, plus jeune, aux cheveux impeccables qui ne bougent jamais, toujours assis à la meilleure place de la galerie de presse, toujours bronzé, toujours le premier au buffet. Gaston le jalouse en silence (enfin, pas en silence).
