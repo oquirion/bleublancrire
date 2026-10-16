@@ -4,6 +4,8 @@ title: "Mon œil gauche a regardé un téléroman, avec une finale en prolongati
 title_en: "My Left Eye Watched a Soap Opera, With an Overtime Finale"
 date: 2026-09-20 04:05:00 -0400
 game:
+  id: 2026010007
+  type: 1
   away: TOR
   away_score: 3
   home: MTL

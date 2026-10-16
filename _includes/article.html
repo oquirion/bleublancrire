@@ -1,15 +1,24 @@
 {% assign p = include.p %}
+{% include mood.html game=p.game %}
 <article class="post">
   <p class="kicker"><span lang="fr">{{ p.game.date_label_fr }}</span><span lang="en">{{ p.game.date_label_en }}</span></p>
   <h1><span lang="fr">{{ p.title }}</span><span lang="en">{{ p.title_en }}</span></h1>
   <div class="byline">
-    <img src="{{ '/assets/gaston.svg' | relative_url }}" alt="Gaston Ronchon" width="56" height="56">
-    <div><strong>Gaston « Grumpy » Ronchon</strong><span lang="fr">Chroniqueur fictif, grincheux bien réel</span><span lang="en">Fictional columnist, very real grump</span></div>
+    <img src="{{ '/assets/gaston-' | append: mood | append: '.svg' | relative_url }}" alt="Gaston Ronchon" width="56" height="56" title="{{ mood_fr }}">
+    <div><strong>Gaston « Grumpy » Ronchon</strong><span lang="fr">{{ mood_fr }} · chroniqueur fictif</span><span lang="en">{{ mood_en }} · fictional columnist</span></div>
     <div class="langswitch" role="group" aria-label="Langue / Language">
       <button type="button" data-set-lang="fr">FR</button><button type="button" data-set-lang="en">EN</button>
     </div>
   </div>
   {% include scorecard.html game=p.game %}
+  {% if p.context %}
+  <p class="context-strip">
+    <span><span lang="fr">Fiche</span><span lang="en">Record</span> <b>{{ p.context.record }}</b></span>
+    <span><b>{{ p.context.points }}</b> pts</span>
+    <span><b>{{ p.context.division_rank }}<span lang="fr">e</span><span lang="en">th</span></b> <span lang="fr">dans l'Atlantique</span><span lang="en">in the Atlantic</span></span>
+    <span><span lang="fr">Séquence :</span><span lang="en">Streak:</span> <b><span lang="fr">{{ p.context.streak_fr }}</span><span lang="en">{{ p.context.streak_en }}</span></b></span>
+  </p>
+  {% endif %}
   {{ include.body }}
   {% if p.useless_stats %}
   <aside class="useless">
@@ -24,6 +33,7 @@
     </ol>
   </aside>
   {% endif %}
+  {% include prediction.html p=p %}
   {% if p.sources %}
   <p class="sources">Sources : {% for s in p.sources %}<a href="{{ s.url }}">{{ s.name }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
   {% endif %}

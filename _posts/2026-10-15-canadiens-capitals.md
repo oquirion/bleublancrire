@@ -4,6 +4,8 @@ title: "Ma berçante a fait le match au complet, puis elle a basculé"
 title_en: "My Rocking Chair Played the Whole Game, Then It Tipped Over"
 date: 2026-10-15 04:00:00 -0400
 game:
+  id: 2026020106
+  type: 2
   away: MTL
   away_score: 4
   home: WSH
@@ -11,6 +13,23 @@ game:
   venue: "Capital One Arena"
   date_label_fr: "Mercredi 14 octobre 2026"
   date_label_en: "Wednesday, October 14, 2026"
+context:
+  record: "3-3-1"
+  points: 7
+  division_rank: 7
+  streak_fr: "1 défaite"
+  streak_en: "1 loss"
+prediction:
+  game_id: 2026020126
+  away: BUF
+  home: MTL
+  away_score: 2
+  home_score: 3
+  suffix: "T.B. / SO"
+  date_label_fr: "samedi 17 octobre, Centre Bell"
+  date_label_en: "Saturday, October 17, Bell Centre"
+  fr: "Encore les Sabres, encore des tirs de barrage. Ma cardiologue a demandé une passe de presse."
+  en: "Buffalo again, a shootout again. My cardiologist has asked for a press pass."
 quote:
   fr: "Une berçante, ça va par en avant, ça va par en arrière, et tant que tu restes dedans, tu te crois en sécurité."
   en: "A rocking chair goes forward, it goes back, and as long as you stay in it, you think you are safe."

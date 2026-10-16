@@ -13,6 +13,7 @@ permalink: /chroniques/
   </div>
   <div class="langswitch" role="group" aria-label="Langue / Language"><button type="button" data-set-lang="fr">FR</button><button type="button" data-set-lang="en">EN</button></div>
 </section>
+{% include meter.html %}
 {% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
 {% for y in years %}
 <h2 class="section-title">{{ y.name }} <span class="count">· {{ y.items.size }}</span></h2>

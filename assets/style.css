@@ -102,3 +102,31 @@ footer p{margin:0 0 .6rem}
 .postnav .g{font:600 .78rem "Inter",system-ui,sans-serif;color:var(--muted);letter-spacing:.05em}
 @media (max-width:620px){.postnav{grid-template-columns:1fr}.postnav .next{grid-column:1;text-align:left}}
 .section-title .count{color:var(--rouge-ink)}
+
+/* Context strip under the scorecard */
+.context-strip{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin:-.6rem 0 1.5rem;font:500 .8rem "Inter",system-ui,sans-serif;color:var(--muted)}
+.context-strip b{color:var(--ink)}
+
+/* Grumpiness meter */
+.meter{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:1rem 1.2rem;margin:0 0 2rem}
+.meter img{width:64px;height:64px}
+.meter-bar{height:12px;border-radius:999px;background:linear-gradient(90deg,#3a7d44 0%,#e0b100 45%,#e06a00 70%,var(--rouge) 100%);position:relative;margin:.45rem 0 .35rem;overflow:hidden}
+.meter-bar i{position:absolute;top:0;bottom:0;right:0;background:var(--box);border-left:3px solid var(--ink)}
+.meter-label{margin:0;font:600 .85rem "Inter",system-ui,sans-serif}
+.meter-note{color:var(--muted);font-weight:500;margin-left:.4rem}
+.meter-facts{display:grid;grid-template-columns:repeat(2,auto);gap:.3rem 1rem;margin:0;font:500 .78rem "Inter",system-ui,sans-serif}
+.meter-facts div{display:flex;flex-direction:column}
+.meter-facts dt{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.65rem}
+.meter-facts dd{margin:0;font:800 1rem "Inter",system-ui,sans-serif;color:var(--ink)}
+@media (max-width:620px){.meter{grid-template-columns:auto 1fr}.meter-facts{grid-column:1/-1;grid-template-columns:repeat(4,auto);justify-content:space-between}}
+
+/* Prediction box */
+.prediction{margin:1.5rem 0;border-radius:16px;padding:1.2rem 1.4rem;background:var(--bleu-deep);color:#fff}
+.prediction h2{margin:0 0 .6rem;font-size:1.3rem;color:#fff}
+.prediction .kicker{color:#ffb3bb}
+.pred-past{margin:0 0 1rem;font-size:.95rem;color:#dfe5fb}
+.pred-past .ok{color:#9be3a6}.pred-past .miss{color:#ffb3bb}
+.pred-score{font:900 2rem/1.1 "Fraunces",Georgia,serif;margin:.3rem 0}
+.pred-score small{font:600 .8rem "Inter",system-ui,sans-serif;color:#c9d2f2}
+.pred-quip{font-style:italic;margin:.2rem 0 .8rem;color:#e7ebfa}
+.pred-record{margin:0;font:600 .78rem "Inter",system-ui,sans-serif;color:#c9d2f2;border-top:1px solid rgba(255,255,255,.15);padding-top:.7rem}

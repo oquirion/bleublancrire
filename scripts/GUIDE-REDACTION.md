@@ -16,6 +16,9 @@ Lisez au complet, avant d'écrire :
   - `date: AAAA-MM-JJ 04:00:00 -0400` (ou `-0500` en hiver ; 04:05 si deux matchs le même jour)
   - `game:` avec `away`, `away_score`, `home`, `home_score`, `venue`, `date_label_fr`, `date_label_en`, et **seulement si prolongation ou tirs de barrage** `result_suffix: "Prol. / OT"` ou `"T.B. / SO"`
   - `date_label_fr` / `date_label_en` : « Mardi 6 octobre 2026 » / « Tuesday, October 6, 2026 ». Match préparatoire : préfixe « Match préparatoire · » / « Preseason · ». Séries : « Séries · » / « Playoffs · ».
+  - dans `game:`, ajoutez aussi `id:` (identifiant LNH du match) et `type:` (1 = préparatoire, 2 = saison, 3 = séries) ; ils servent à l'humeur de Gaston, à l'indice de grogne et à sa fiche de prédictions
+  - `context:` (saison régulière et séries seulement) : copiez tel quel le bloc YAML affiché par `scripts/contexte-saison.sh <date_du_match>`. Pas de bloc `context:` pour un match préparatoire.
+  - `prediction:` : la prédiction de Gaston pour le **prochain** match (voir section 6)
   - `quote:` `fr` et `en` : une phrase tirée de la chronique (elle devient la « phrase du jour »)
   - `useless_stats:` exactement 5 éléments `num`, `fr`, `en`
   - `sources:` 2 éléments : le sommaire LNH `https://www.nhl.com/gamecenter/<away>-vs-<home>/AAAA/MM/JJ/<id>` (abréviations en minuscules, date du match) et `https://api-web.nhle.com/v1/gamecenter/<id>/boxscore`. **L'identifiant du match doit apparaître dans les sources** : c'est ce qui permet de savoir qu'un match a déjà sa chronique.
@@ -27,6 +30,7 @@ Lisez au complet, avant d'écrire :
 - Sources : lancez `scripts/donnees-match.sh <id>`. Le script télécharge les données officielles de la LNH (landing + boxscore) dans `.cache/<id>/` et affiche un résumé (buts, passes, temps, force, tirs de barrage, étoiles, punitions, joueurs, gardiens). Le résumé est aussi dans `.cache/<id>/resume.txt` ; en cas de doute, lisez les fichiers JSON bruts `.cache/<id>/landing.json` et `boxscore.json`. N'utilisez pas d'autres sources pour les faits.
 - Chaque nom, chiffre, temps, passe, gardien ou statistique réelle doit venir de ces données. Pas de records, séquences, blessures, trios, décisions d'entraîneur ou citations qui n'y sont pas.
 - Si la donnée ne donne qu'une initiale, utilisez le nom de famille seul.
+- Contexte de saison : lancez `scripts/contexte-saison.sh <date_du_match>`. Vous pouvez utiliser ses faits (fiche, points, rang, séquence, 10 derniers matchs, domicile/étranger, meneurs du club, prochain match) : « troisième défaite de suite », « 7e de l'Atlantique », « le 5e but de Suzuki cette saison ». Si vous rattrapez un vieux match, les totaux des meneurs peuvent inclure des matchs plus récents : ne les utilisez pas dans ce cas.
 - Tirs de barrage : le score final compte le but gagnant comme +1. Décrivez-le correctement (égalité après la prolongation, décidé en tirs de barrage).
 - **Aucune citation inventée** d'une vraie personne. Les blagues sur le jeu sont permises ; restez affectueux, jamais méchant, jamais sur la vie privée ou l'apparence.
 
@@ -40,3 +44,27 @@ Lisez au complet, avant d'écrire :
 - Chaque chronique a **une image centrale nouvelle** (une berçante, une rénovation, une partie de pêche…). Ne recopiez pas de phrases des chroniques précédentes.
 - Une victoire le rend méfiant ; une défaite le rend théâtral.
 - Continuité : si la chronique précédente annonçait quelque chose (« je partirai après la première, probablement »), faites-y écho.
+
+## 6. La boule de cristal (prédiction)
+- Chaque chronique de saison ou de séries se termine (dans l'en-tête seulement, pas dans le texte) par la prédiction de Gaston pour le prochain match, donné par `scripts/contexte-saison.sh` :
+```
+prediction:
+  game_id: <id du prochain match>
+  away: <ABR>
+  home: <ABR>
+  away_score: <nombre>
+  home_score: <nombre>
+  suffix: "Prol. / OT"        # facultatif ; ou "T.B. / SO"
+  date_label_fr: "samedi 17 octobre, Centre Bell"
+  date_label_en: "Saturday, October 17, Bell Centre"
+  fr: "Une phrase grincheuse qui justifie la prédiction."
+  en: "Same joke, natural English."
+```
+- Pas d'égalité (le hockey n'en a plus). Gaston prédit avec sa mauvaise foi habituelle ; il n'a pas besoin d'avoir raison.
+- Le site calcule tout seul s'il avait raison et tient sa fiche. **Si la chronique précédente contenait une prédiction pour le match que vous couvrez, Gaston y réagit dans le texte** (fierté insupportable s'il a eu raison, mauvaise foi s'il s'est trompé).
+- Le site affiche aussi l'humeur de Gaston (content, méfiant, boude, furieux) d'après le résultat, et un « indice de grogne » sur les 5 derniers matchs. Le texte peut y faire allusion.
+
+## 7. Max Lustré, l'ennemi juré (personnage FICTIF)
+- Max Lustré est un journaliste télé **inventé**, plus jeune, aux cheveux impeccables qui ne bougent jamais, toujours assis à la meilleure place de la galerie de presse, toujours bronzé, toujours le premier au buffet. Gaston le jalouse en silence (enfin, pas en silence).
+- Utilisez-le dans environ une chronique sur trois, une ou deux phrases maximum (ou une stat inutile) ; jamais le sujet principal.
+- Règles : Max Lustré est un personnage de fiction. Ne lui donnez jamais le nom, la chaîne, le média, les traits reconnaissables ou les anecdotes d'un vrai journaliste, et ne mettez jamais un vrai journaliste dans ce rôle.

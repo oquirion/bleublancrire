@@ -4,6 +4,8 @@ title: "J'ai pris la 40 jusqu'à Trois-Rivières. Caufield a pris le volant."
 title_en: "I Drove to Trois-Rivières. Caufield Took the Wheel."
 date: 2026-09-22 04:00:00 -0400
 game:
+  id: 2026010022
+  type: 1
   away: OTT
   away_score: 2
   home: MTL

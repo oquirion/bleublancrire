@@ -1,0 +1,35 @@
+{%- comment -%} Gaston's prediction box + his season track record. include.p = the column. {%- endcomment -%}
+{%- assign pp = include.p -%}
+{%- assign pr_total = 0 -%}{%- assign pr_ok = 0 -%}
+{%- for q in site.posts -%}{%- if q.prediction -%}
+  {%- for r in site.posts -%}{%- if r.game.id == q.prediction.game_id -%}
+    {%- assign pr_total = pr_total | plus: 1 -%}
+    {%- if q.prediction.away_score > q.prediction.home_score -%}{%- assign pw = q.prediction.away -%}{%- else -%}{%- assign pw = q.prediction.home -%}{%- endif -%}
+    {%- if r.game.away_score > r.game.home_score -%}{%- assign aw = r.game.away -%}{%- else -%}{%- assign aw = r.game.home -%}{%- endif -%}
+    {%- if pw == aw -%}{%- assign pr_ok = pr_ok | plus: 1 -%}{%- endif -%}
+  {%- endif -%}{%- endfor -%}
+{%- endif -%}{%- endfor -%}
+{%- assign before = nil -%}
+{%- for q in site.posts -%}{%- if q.prediction.game_id == pp.game.id -%}{%- assign before = q.prediction -%}{%- endif -%}{%- endfor -%}
+{%- if pp.prediction or before -%}
+<aside class="prediction">
+  <h2><span lang="fr">La boule de cristal de Gaston</span><span lang="en">Gaston's Crystal Ball</span></h2>
+  {%- if before -%}
+    {%- if before.away_score > before.home_score -%}{%- assign bw = before.away -%}{%- else -%}{%- assign bw = before.home -%}{%- endif -%}
+    {%- if pp.game.away_score > pp.game.home_score -%}{%- assign rw = pp.game.away -%}{%- else -%}{%- assign rw = pp.game.home -%}{%- endif -%}
+  <p class="pred-past"><span lang="fr">Pour ce match, il avait prédit</span><span lang="en">For this game, he had predicted</span>
+    <strong>{{ before.away }} {{ before.away_score }} – {{ before.home_score }} {{ before.home }}</strong>.
+    {%- if bw == rw -%}<span class="ok"><span lang="fr"> Bon gagnant. Il ne s'en remet pas.</span><span lang="en"> Right winner. He can't get over it.</span></span>
+    {%- else -%}<span class="miss"><span lang="fr"> Raté. Il accuse la glace.</span><span lang="en"> Missed. He blames the ice.</span></span>{%- endif -%}
+  </p>
+  {%- endif -%}
+  {%- if pp.prediction -%}
+  <div class="pred-next">
+    <p class="kicker"><span lang="fr">Prochain match · {{ pp.prediction.date_label_fr }}</span><span lang="en">Next game · {{ pp.prediction.date_label_en }}</span></p>
+    <p class="pred-score">{{ pp.prediction.away }} <b>{{ pp.prediction.away_score }}</b> – <b>{{ pp.prediction.home_score }}</b> {{ pp.prediction.home }}{%- if pp.prediction.suffix -%}{%- assign psx = pp.prediction.suffix | split: " / " -%} <small><span lang="fr">({{ psx[0] }})</span><span lang="en">({{ psx[1] }})</span></small>{%- endif -%}</p>
+    <p class="pred-quip"><span lang="fr">« {{ pp.prediction.fr }} »</span><span lang="en">“{{ pp.prediction.en }}”</span></p>
+  </div>
+  {%- endif -%}
+  <p class="pred-record"><span lang="fr">Fiche de Gaston cette saison : {{ pr_ok }} bonne{% if pr_ok > 1 %}s{% endif %} prédiction{% if pr_ok > 1 %}s{% endif %} sur {{ pr_total }}.</span><span lang="en">Gaston's record this season: {{ pr_ok }} right out of {{ pr_total }}.</span>{% if pr_total == 0 %}<span lang="fr"> (La saison des prédictions commence. Il est déjà nerveux.)</span><span lang="en"> (Prediction season starts now. He's already nervous.)</span>{% endif %}</p>
+</aside>
+{%- endif -%}

@@ -4,6 +4,8 @@ title: "Ils ont démoli la maison, l'ont rebâtie, puis ont perdu les clés"
 title_en: "They Tore Down the House, Rebuilt It, Then Lost the Keys"
 date: 2026-10-04 04:00:00 -0400
 game:
+  id: 2026020026
+  type: 2
   away: MTL
   away_score: 5
   home: PIT

@@ -4,6 +4,8 @@ title: "Ma première crêpe de la saison n'a pas collé. Je suis inquiet."
 title_en: "My First Pancake of the Season Didn't Stick. I Am Worried."
 date: 2026-09-20 04:00:00 -0400
 game:
+  id: 2026010006
+  type: 1
   away: MTL
   away_score: 4
   home: TOR

@@ -4,6 +4,8 @@ title: "Premier jour d'école : on a gagné, et je ne fais confiance à personne
 title_en: "First Day of School: We Won, and I Trust No One"
 date: 2026-09-30 04:00:00 -0400
 game:
+  id: 2026020002
+  type: 2
   away: MTL
   away_score: 3
   home: TOR

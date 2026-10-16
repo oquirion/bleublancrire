@@ -18,7 +18,9 @@
       "Bash(scripts/matchs-a-couvrir.sh)",
       "Bash(./scripts/matchs-a-couvrir.sh)",
       "Bash(scripts/donnees-match.sh:*)",
-      "Bash(./scripts/donnees-match.sh:*)"
+      "Bash(./scripts/donnees-match.sh:*)",
+      "Bash(scripts/contexte-saison.sh:*)",
+      "Bash(./scripts/contexte-saison.sh:*)"
     ],
     "deny": [
       "Bash(git push --force:*)",

@@ -1,0 +1,34 @@
+{%- comment -%} Grumpiness meter: last 5 regular-season games + record from the latest column's context. {%- endcomment -%}
+{%- assign g_total = 0 -%}{%- assign g_n = 0 -%}{%- assign g_ctx = nil -%}
+{%- for q in site.posts -%}
+  {%- if q.context and g_ctx == nil -%}{%- assign g_ctx = q.context -%}{%- endif -%}
+  {%- if q.game.type == 2 and g_n < 5 -%}
+    {%- include mood.html game=q.game -%}
+    {%- assign g_total = g_total | plus: mood_pts -%}{%- assign g_n = g_n | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if g_n > 0 -%}
+{%- assign g_level = g_total | times: 100 | divided_by: 125 -%}{%- if g_level > 100 -%}{%- assign g_level = 100 -%}{%- endif -%}
+{%- if g_level < 20 -%}{%- assign g_fr = "Serein" -%}{%- assign g_en = "Serene" -%}{%- assign g_face = "content" -%}
+{%- elsif g_level < 40 -%}{%- assign g_fr = "Méfiant" -%}{%- assign g_en = "Suspicious" -%}{%- assign g_face = "mefiant" -%}
+{%- elsif g_level < 60 -%}{%- assign g_fr = "Grognon" -%}{%- assign g_en = "Grumpy" -%}{%- assign g_face = "boude" -%}
+{%- elsif g_level < 80 -%}{%- assign g_fr = "Furieux" -%}{%- assign g_en = "Fuming" -%}{%- assign g_face = "furieux" -%}
+{%- else -%}{%- assign g_fr = "Volcanique" -%}{%- assign g_en = "Volcanic" -%}{%- assign g_face = "furieux" -%}{%- endif -%}
+<section class="meter" aria-label="Indice de grogne">
+  <img src="{{ '/assets/gaston-' | append: g_face | append: '.svg' | relative_url }}" alt="" width="64" height="64">
+  <div class="meter-body">
+    <p class="kicker"><span lang="fr">Indice de grogne</span><span lang="en">Grumpiness index</span></p>
+    <div class="meter-bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ g_level }}"><i style="left: {{ g_level }}%"></i></div>
+    <p class="meter-label"><strong>{{ g_level }}/100 · <span lang="fr">{{ g_fr }}</span><span lang="en">{{ g_en }}</span></strong>
+      <span class="meter-note"><span lang="fr">selon les {{ g_n }} derniers matchs</span><span lang="en">based on the last {{ g_n }} games</span></span></p>
+  </div>
+  {%- if g_ctx -%}
+  <dl class="meter-facts">
+    <div><dt><span lang="fr">Fiche</span><span lang="en">Record</span></dt><dd>{{ g_ctx.record }}</dd></div>
+    <div><dt>Points</dt><dd>{{ g_ctx.points }}</dd></div>
+    <div><dt><span lang="fr">Division</span><span lang="en">Division</span></dt><dd>{{ g_ctx.division_rank }}<span lang="fr">e</span><span lang="en">th</span></dd></div>
+    <div><dt><span lang="fr">Séquence</span><span lang="en">Streak</span></dt><dd><span lang="fr">{{ g_ctx.streak_fr }}</span><span lang="en">{{ g_ctx.streak_en }}</span></dd></div>
+  </dl>
+  {%- endif -%}
+</section>
+{%- endif -%}

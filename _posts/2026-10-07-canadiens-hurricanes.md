@@ -3,6 +3,8 @@ layout: post
 title: "La première période était magnifique. J'aurais dû rentrer chez moi."
 title_en: "The First Period Was Lovely. I Should Have Gone Home."
 game:
+  id: 2026020045
+  type: 2
   away: CAR
   away_score: 6
   home: MTL

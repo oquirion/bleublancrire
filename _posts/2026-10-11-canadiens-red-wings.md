@@ -4,6 +4,8 @@ title: "Soixante-cinq minutes de silence, puis le neveu a parlé"
 title_en: "Sixty-Five Minutes of Silence, Then the Nephew Spoke"
 date: 2026-10-11 04:00:00 -0400
 game:
+  id: 2026020075
+  type: 2
   away: DET
   away_score: 0
   home: MTL

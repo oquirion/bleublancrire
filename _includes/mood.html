@@ -1,0 +1,13 @@
+{%- comment -%} Sets mood, mood_fr, mood_en, mood_pts from include.game (MTL's point of view). {%- endcomment -%}
+{%- assign mg = include.game -%}
+{%- if mg.home == "MTL" -%}{%- assign m_for = mg.home_score -%}{%- assign m_against = mg.away_score -%}{%- else -%}{%- assign m_for = mg.away_score -%}{%- assign m_against = mg.home_score -%}{%- endif -%}
+{%- assign m_diff = m_for | minus: m_against -%}
+{%- if m_diff > 0 -%}
+  {%- if mg.result_suffix -%}{%- assign mood = "mefiant" -%}{%- assign mood_pts = 5 -%}{%- assign mood_fr = "Gaston est méfiant" -%}{%- assign mood_en = "Gaston is suspicious" -%}
+  {%- else -%}{%- assign mood = "content" -%}{%- assign mood_pts = 0 -%}{%- assign mood_fr = "Gaston est (presque) content" -%}{%- assign mood_en = "Gaston is (almost) happy" -%}{%- endif -%}
+{%- elsif m_diff > -3 -%}
+  {%- assign mood = "boude" -%}{%- assign mood_fr = "Gaston boude" -%}{%- assign mood_en = "Gaston is sulking" -%}
+  {%- if mg.result_suffix -%}{%- assign mood_pts = 15 -%}{%- else -%}{%- assign mood_pts = 25 -%}{%- endif -%}
+{%- else -%}
+  {%- assign mood = "furieux" -%}{%- assign mood_pts = 30 -%}{%- assign mood_fr = "Gaston est furieux" -%}{%- assign mood_en = "Gaston is fuming" -%}
+{%- endif -%}

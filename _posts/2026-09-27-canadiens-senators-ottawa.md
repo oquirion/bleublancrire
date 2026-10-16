@@ -4,6 +4,8 @@ title: "Ottawa a installé un péage, et on a payé quatre fois"
 title_en: "Ottawa Set Up a Toll Booth, and We Paid Four Times"
 date: 2026-09-27 04:00:00 -0400
 game:
+  id: 2026010064
+  type: 1
   away: MTL
   away_score: 3
   home: OTT

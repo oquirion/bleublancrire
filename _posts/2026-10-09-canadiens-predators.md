@@ -4,6 +4,8 @@ title: "J'avais promis de partir après la première. Il ne s'était encore rien
 title_en: "I Promised to Leave After the First. Nothing Had Happened Yet."
 date: 2026-10-09 04:00:00 -0400
 game:
+  id: 2026020058
+  type: 2
   away: NSH
   away_score: 5
   home: MTL

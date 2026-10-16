@@ -4,6 +4,8 @@ title: "Programme double : le deuxième film était meilleur"
 title_en: "Double Feature: The Second Movie Was Better"
 date: 2026-09-27 04:05:00 -0400
 game:
+  id: 2026010065
+  type: 1
   away: OTT
   away_score: 2
   home: MTL

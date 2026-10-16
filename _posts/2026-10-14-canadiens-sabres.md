@@ -4,6 +4,8 @@ title: "Trente-huit pièces dans le parcomètre, et on a failli avoir le ticket"
 title_en: "Thirty-Eight Coins in the Meter, and We Nearly Got the Ticket"
 date: 2026-10-14 04:00:00 -0400
 game:
+  id: 2026020092
+  type: 2
   away: BUF
   away_score: 3
   home: MTL

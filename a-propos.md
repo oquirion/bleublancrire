@@ -10,13 +10,13 @@ permalink: /a-propos/
 
 # À propos de Gaston Ronchon
 
-Gaston « Grumpy » Ronchon affirme couvrir le Canadien depuis l'époque du Forum, avoir assisté à onze conquêtes de la Coupe Stanley (dont trois dont il ne se souvient plus) et n'avoir jamais quitté un match avant la fin. Une seule de ces affirmations est peut-être vraie.
+Gaston « Grumpy » Ronchon affirme couvrir le Canadien depuis l'époque du Forum, avoir assisté à onze conquêtes de la Coupe Stanley (dont trois dont il ne se souvient plus) et n'avoir jamais quitté un match avant la fin. Une seule de ces affirmations est peut-être vraie. Son ennemi juré : Max Lustré, journaliste télé aux cheveux parfaits qui a toujours une meilleure place que lui (personnage tout aussi fictif).
 
 **Gaston est un personnage fictif.** Ses chroniques sont rédigées chaque nuit par Claude, une intelligence artificielle, à partir des résultats et statistiques officiels de la LNH. Les scores et les chiffres réels sont vérifiés ; les « stats inutiles » sont inventées, et c'est voulu. Ce site est une satire faite par des fans et n'est pas affilié au Club de hockey Canadien ni à la LNH.
 
 # About Gaston "Grumpy" Ronchon
 
-Gaston "Grumpy" Ronchon claims to have covered the Canadiens since the Forum days, to have witnessed eleven Stanley Cup wins (three of which he no longer remembers) and to have never left a game early. At most one of these claims may be true.
+Gaston "Grumpy" Ronchon claims to have covered the Canadiens since the Forum days, to have witnessed eleven Stanley Cup wins (three of which he no longer remembers) and to have never left a game early. At most one of these claims may be true. His sworn enemy: Max Lustré, a TV reporter with perfect hair who always gets a better seat (just as fictional).
 
 **Gaston is a fictional character.** His columns are written every night by Claude, an AI, from official NHL scores and statistics. Real scores and numbers are checked; the "useless stats" are made up, on purpose. This is fan-made satire, not affiliated with the Club de hockey Canadien or the NHL.
 
