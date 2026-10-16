@@ -94,10 +94,19 @@ commit_and_push() {
     git commit -q -m "$msg"
   fi
   [ "$DRY_RUN" -eq 1 ] && { log "[essai] git push origin $BRANCH"; return 0; }
-  if ! git push -q -u origin "$BRANCH" 2>>"$LOG_FILE"; then
-    log "Push refusé ; nouvelle synchronisation puis 2e essai."
-    git pull -q --rebase origin "$BRANCH" || fail "Synchronisation impossible."
-    git push -q -u origin "$BRANCH" 2>>"$LOG_FILE" || fail "Push refusé. Vérifiez votre accès GitHub (voir $LOG_FILE)."
+  local err
+  if ! err="$(git push -q -u origin "$BRANCH" 2>&1)"; then
+    echo "$err" >> "$LOG_FILE"
+    if echo "$err" | grep -qiE "403|denied|authentication|could not read Username"; then
+      fail "GitHub refuse l'accès : $(echo "$err" | grep -iE 'denied|403|authentication' | head -n 1). Voir « Accès GitHub » à la fin du script."
+    fi
+    if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+      log "Push refusé ; nouvelle synchronisation puis 2e essai."
+      git pull -q --rebase origin "$BRANCH" || fail "Synchronisation impossible."
+      git push -q -u origin "$BRANCH" 2>>"$LOG_FILE" || fail "Push refusé. Détails dans $LOG_FILE"
+    else
+      fail "Push refusé : $(echo "$err" | tail -n 1)"
+    fi
   fi
   log "Publié sur GitHub : $(git rev-parse --short HEAD) · $msg"
 }
@@ -172,7 +181,14 @@ case "$cmd" in
 esac
 
 # ----------------------------------------------------------------------------
-#  Accès GitHub, à faire une seule fois sur le Mac (au choix) :
+#  Accès GitHub, à faire une seule fois sur le Mac.
+#  Si votre Mac est déjà connecté à un AUTRE compte GitHub (ex. compte de
+#  travail), forcez ce dépôt à utiliser votre compte personnel :
+#    git remote set-url origin https://oquirion@github.com/oquirion/bleublancrire.git
+#  Au prochain push, entrez comme mot de passe un jeton « fine-grained » du
+#  compte oquirion (Repository access : bleublancrire seulement ; Contents :
+#  Read and write). Le trousseau macOS le garde pour ce compte seulement.
+#  Sinon (au choix) :
 #    • GitHub CLI :  brew install gh  →  gh auth login  →  gh auth setup-git
 #    • ou git + trousseau : au premier push, entrez votre nom d'utilisateur
 #      GitHub et un jeton « fine-grained » limité au dépôt bleublancrire
