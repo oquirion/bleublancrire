@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api-web.nhle.com)",
+      "WebFetch(domain:www.nhl.com)",
+      "Bash(scripts/publier.sh post:*)",
+      "Bash(scripts/publier.sh statut)",
+      "Bash(./scripts/publier.sh post:*)",
+      "Bash(./scripts/publier.sh statut)",
+      "Bash(date:*)",
+      "Bash(ls:*)",
+      "Edit(_posts/**)",
+      "Write(_posts/**)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(wc:*)",
+      "Bash(scripts/matchs-a-couvrir.sh)",
+      "Bash(./scripts/matchs-a-couvrir.sh)",
+      "Bash(scripts/donnees-match.sh:*)",
+      "Bash(./scripts/donnees-match.sh:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}

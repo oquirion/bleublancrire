@@ -124,6 +124,14 @@ check_post() {
   done
   grep -q 'lang="fr"' "$f" || fail "$name : bloc français manquant (<div class=\"body\" lang=\"fr\" markdown=\"1\">)"
   grep -q 'lang="en"' "$f" || fail "$name : bloc anglais manquant (<div class=\"body\" lang=\"en\" markdown=\"1\">)"
+  # Vérifie que l'en-tête est du YAML valide (python3 + PyYAML, sinon ruby)
+  if printf '%s\n' "$fm" | python3 -c 'import sys,yaml; yaml.safe_load(sys.stdin)' 2>/dev/null; then :
+  elif python3 -c 'import yaml' 2>/dev/null; then fail "$name : l'en-tête n'est pas du YAML valide (guillemets ou indentation ?)"
+  elif command -v ruby >/dev/null 2>&1; then
+    printf '%s\n' "$fm" | ruby -ryaml -e 'YAML.safe_load(STDIN.read, permitted_classes: [Date, Time]) rescue (warn $!; exit 1)' 2>>"$LOG_FILE" \
+      || fail "$name : l'en-tête n'est pas du YAML valide (guillemets ou indentation ?)"
+  else log "Avertissement : impossible de vérifier le YAML (ni PyYAML ni ruby)."
+  fi
   log "Chronique valide : $name"
 }
 
