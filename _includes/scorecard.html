@@ -1,0 +1,6 @@
+{% assign g = include.game %}
+<div class="scorecard{% if include.small %} small{% endif %}">
+  <div class="team{% if g.away_score > g.home_score %} win{% endif %}"><span class="abbr">{{ g.away }}</span><span class="score">{{ g.away_score }}</span></div>
+  <div class="mid">{% if g.result_suffix %}{% assign sfx = g.result_suffix | split: " / " %}<span class="final"><span lang="fr">Final ({{ sfx[0] }})</span><span lang="en">Final ({{ sfx[1] }})</span></span>{% else %}<span class="final">Final</span>{% endif %}{% unless include.small %}<span class="venue">{{ g.venue }}</span>{% endunless %}</div>
+  <div class="team{% if g.home_score > g.away_score %} win{% endif %}"><span class="score">{{ g.home_score }}</span><span class="abbr">{{ g.home }}</span></div>
+</div>

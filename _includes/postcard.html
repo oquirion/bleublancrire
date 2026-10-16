@@ -1,0 +1,10 @@
+{% assign post = include.post %}
+<li>
+  <a class="card" href="{{ post.url | relative_url }}">
+    {% include scorecard.html game=post.game small=true %}
+    <div class="card-text">
+      <p class="kicker"><span lang="fr">{{ post.game.date_label_fr }}</span><span lang="en">{{ post.game.date_label_en }}</span></p>
+      <h3><span lang="fr">{{ post.title }}</span><span lang="en">{{ post.title_en }}</span></h3>
+    </div>
+  </a>
+</li>

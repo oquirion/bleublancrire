@@ -1,0 +1,46 @@
+{% assign p = include.p %}
+<article class="post">
+  <p class="kicker"><span lang="fr">{{ p.game.date_label_fr }}</span><span lang="en">{{ p.game.date_label_en }}</span></p>
+  <h1><span lang="fr">{{ p.title }}</span><span lang="en">{{ p.title_en }}</span></h1>
+  <div class="byline">
+    <img src="{{ '/assets/gaston.svg' | relative_url }}" alt="Gaston Ronchon" width="56" height="56">
+    <div><strong>Gaston « Grumpy » Ronchon</strong><span lang="fr">Chroniqueur fictif, grincheux bien réel</span><span lang="en">Fictional columnist, very real grump</span></div>
+    <div class="langswitch" role="group" aria-label="Langue / Language">
+      <button type="button" data-set-lang="fr">FR</button><button type="button" data-set-lang="en">EN</button>
+    </div>
+  </div>
+  {% include scorecard.html game=p.game %}
+  {{ include.body }}
+  {% if p.useless_stats %}
+  <aside class="useless">
+    <header>
+      <h2><span lang="fr">Stats inutiles du soir</span><span lang="en">Useless Stats of the Night</span></h2>
+      <p><span lang="fr">Pur humour. Rien de tout ceci n'est vrai.</span><span lang="en">Pure humor. None of this is real.</span></p>
+    </header>
+    <ol>
+    {% for s in p.useless_stats %}
+      <li><span class="num">{{ s.num }}</span><span class="what"><span lang="fr">{{ s.fr }}</span><span lang="en">{{ s.en }}</span></span></li>
+    {% endfor %}
+    </ol>
+  </aside>
+  {% endif %}
+  {% if p.sources %}
+  <p class="sources">Sources : {% for s in p.sources %}<a href="{{ s.url }}">{{ s.name }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+  {% endif %}
+</article>
+<nav class="postnav" aria-label="Chroniques">
+  {% if p.previous %}
+  <a class="prev" href="{{ p.previous.url | relative_url }}">
+    <span class="dir"><span lang="fr">← Chronique précédente</span><span lang="en">← Previous column</span></span>
+    <span class="t"><span lang="fr">{{ p.previous.title }}</span><span lang="en">{{ p.previous.title_en }}</span></span>
+    <span class="g">{{ p.previous.game.away }} {{ p.previous.game.away_score }} · {{ p.previous.game.home }} {{ p.previous.game.home_score }}</span>
+  </a>
+  {% else %}<span></span>{% endif %}
+  {% if p.next %}
+  <a class="next" href="{{ p.next.url | relative_url }}">
+    <span class="dir"><span lang="fr">Chronique suivante →</span><span lang="en">Next column →</span></span>
+    <span class="t"><span lang="fr">{{ p.next.title }}</span><span lang="en">{{ p.next.title_en }}</span></span>
+    <span class="g">{{ p.next.game.away }} {{ p.next.game.away_score }} · {{ p.next.game.home }} {{ p.next.game.home_score }}</span>
+  </a>
+  {% endif %}
+</nav>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  {% if page.layout == "post" %}<link rel="canonical" href="{{ page.url | absolute_url }}">{% endif %}
+  <link rel="icon" href="{{ '/assets/gaston.svg' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="{{ '/' | relative_url }}"><span class="b">Bleu</span> <span class="w">Blanc</span> <em>Rire</em></a>
+      <p class="tagline">La chronique de Gaston « Grumpy » Ronchon</p>
+      <nav><a href="{{ '/' | relative_url }}"><span lang="fr">Dernière chronique</span><span lang="en">Latest</span></a><a href="{{ '/chroniques/' | relative_url }}"><span lang="fr">Archives</span><span lang="en">Archive</span></a><a href="{{ '/a-propos/' | relative_url }}"><span lang="fr">À propos</span><span lang="en">About</span></a></nav>
+    </div>
+    <div class="tricolore" aria-hidden="true"><i></i><i></i><i></i></div>
+  </header>
+  <main>{{ content }}</main>
+  <footer>
+    <img src="{{ '/assets/gaston.svg' | relative_url }}" alt="" width="48" height="48">
+    <div>
+      <p>Satire faite par des fans, rédigée par une IA (Claude). Non affiliée au Club de hockey Canadien ni à la LNH. Les statistiques réelles proviennent des données officielles de la LNH ; les « stats inutiles » sont inventées.</p>
+      <p>Fan-made satire written by an AI (Claude). Not affiliated with the Club de hockey Canadien or the NHL. Real stats come from official NHL data; the "useless stats" are made up.</p>
+    </div>
+  </footer>
+  <script>
+  (function(){
+    var KEY='bbr-lang', pref='fr';
+    try{ pref=localStorage.getItem(KEY)||pref; }catch(e){}
+    function set(l){
+      document.documentElement.setAttribute('data-lang',l);
+      document.documentElement.lang=l;
+      document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed', b.getAttribute('data-set-lang')===l);});
+      try{ localStorage.setItem(KEY,l); }catch(e){}
+    }
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){ b.addEventListener('click',function(){ set(b.getAttribute('data-set-lang')); }); });
+    set(pref);
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{% assign latest = site.posts.first %}
+{% if latest %}
+{% include article.html p=latest body=latest.content %}
+{% assign older = site.posts | slice: 1, 5 %}
+{% if older.size > 0 %}
+<h2 class="section-title"><span lang="fr">Chroniques précédentes</span><span lang="en">Previous columns</span></h2>
+<ul class="posts">
+{% for post in older %}{% include postcard.html post=post %}{% endfor %}
+</ul>
+{% endif %}
+<p class="back"><a href="{{ '/chroniques/' | relative_url }}"><span lang="fr">Toutes les chroniques →</span><span lang="en">All columns →</span></a></p>
+{% endif %}

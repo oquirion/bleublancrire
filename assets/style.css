@@ -1,0 +1,104 @@
+:root{
+  --bleu:#1b2a6b; --bleu-deep:#121d4d; --rouge:#c8102e; --rouge-ink:#b3202f;
+  --ink:#1c1c22; --muted:#5d6070; --paper:#fbf8f2; --card:#ffffff; --rule:#e4ded2; --box:#f2efe7;
+  --link:#1b2a6b; --ice:#eef2fb;
+}
+@media (prefers-color-scheme:dark){
+  :root{--ink:#ecebe6;--muted:#a7a9b6;--paper:#13141a;--card:#1c1d26;--rule:#2d2f3a;--box:#20212b;--link:#9fb1ff;--rouge-ink:#ff6b78;--ice:#1a2140}
+}
+*{box-sizing:border-box}
+html[data-lang="fr"] [lang="en"], html[data-lang="en"] [lang="fr"]{display:none}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 "Source Serif 4",Georgia,serif;-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+img{max-width:100%}
+
+/* Masthead */
+.masthead{background:var(--bleu-deep);color:#fff;text-align:center}
+.masthead-inner{padding:2.2rem 16px 1.4rem}
+.brand{font:900 clamp(2.6rem,9vw,4.6rem)/1 "Fraunces",Georgia,serif;text-decoration:none;letter-spacing:-.02em;color:#fff}
+.brand .b{color:#8fb0ff}
+.brand .w{color:#fff}
+.brand em{color:#ff4d5e;font-style:italic;font-weight:700}
+.tagline{font:700 .78rem "Inter",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;color:#c9d2f2;margin:.8rem 0 1rem}
+.masthead nav{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.masthead nav a{font:700 .82rem "Inter",system-ui,sans-serif;color:#fff;text-decoration:none;padding:.35rem .8rem;border:1px solid rgba(255,255,255,.3);border-radius:999px}
+.masthead nav a:hover{background:rgba(255,255,255,.1)}
+.tricolore{display:flex;height:8px}.tricolore i{flex:1}
+.tricolore i:nth-child(1){background:var(--bleu)}.tricolore i:nth-child(2){background:#fff}.tricolore i:nth-child(3){background:var(--rouge)}
+
+main{max-width:740px;margin:0 auto;padding:2rem 16px}
+.kicker{font:800 .74rem "Inter",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--rouge-ink);margin:0}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.15;letter-spacing:-.01em}
+
+/* Language switch */
+.langswitch{display:inline-flex;border:2px solid var(--bleu);border-radius:999px;overflow:hidden;flex:none}
+.langswitch button{font:800 .78rem "Inter",system-ui,sans-serif;letter-spacing:.06em;padding:.4rem .8rem;border:0;background:transparent;color:var(--link);cursor:pointer}
+.langswitch button[aria-pressed="true"]{background:var(--bleu);color:#fff}
+@media (prefers-color-scheme:dark){.langswitch{border-color:var(--link)}.langswitch button[aria-pressed="true"]{background:var(--link);color:#13141a}}
+
+/* Home */
+.hero{display:grid;grid-template-columns:auto 1fr auto;gap:1.25rem;align-items:start;background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:1.5rem;box-shadow:0 1px 0 var(--rule)}
+.hero img{width:112px;height:112px}
+.quote{margin:.4rem 0 .6rem;font:italic 700 clamp(1.25rem,3.5vw,1.6rem)/1.3 "Fraunces",Georgia,serif;color:var(--ink);border:0;padding:0;background:none}
+.lede{margin:0;color:var(--muted);font-size:1rem}
+@media (max-width:620px){.hero{grid-template-columns:1fr;text-align:center;justify-items:center}.hero img{width:88px;height:88px}}
+.section-title{font-size:1.1rem;font-family:"Inter",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:2.5rem 0 1rem}
+.posts{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.card{display:grid;grid-template-columns:200px 1fr;gap:1.25rem;align-items:center;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:1rem;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.card h3{margin:.3rem 0 0;font-size:1.3rem}
+@media (max-width:620px){.card{grid-template-columns:1fr}}
+
+/* Scorecard */
+.scorecard{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--bleu-deep);color:#fff;border-radius:14px;padding:1rem 1.25rem;margin:1.5rem 0;border-bottom:5px solid var(--rouge)}
+.scorecard .team{display:flex;align-items:center;gap:.9rem;opacity:.65}
+.scorecard .team:last-child{justify-content:flex-end}
+.scorecard .team.win{opacity:1}
+.scorecard .abbr{font:800 1.05rem "Inter",system-ui,sans-serif;letter-spacing:.08em}
+.scorecard .score{font:900 2.8rem/1 "Fraunces",Georgia,serif}
+.scorecard .mid{text-align:center;display:flex;flex-direction:column;gap:.2rem;padding:0 .75rem}
+.scorecard .final{font:800 .7rem "Inter",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;color:#ffb3bb}
+.scorecard .venue{font:500 .78rem "Inter",system-ui,sans-serif;color:#c9d2f2}
+.scorecard.small{margin:0;padding:.7rem .9rem;border-bottom-width:4px}
+.scorecard.small .score{font-size:1.9rem}.scorecard.small .abbr{font-size:.85rem}.scorecard.small .team{gap:.5rem}
+
+/* Post */
+.post h1{font-size:clamp(2rem,5.5vw,2.9rem);margin:.4rem 0 1rem;font-weight:900}
+.byline{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.byline img{width:56px;height:56px}
+.byline > div:nth-child(2){display:flex;flex-direction:column;font:500 .85rem/1.35 "Inter",system-ui,sans-serif;color:var(--muted);margin-right:auto}
+.byline strong{color:var(--ink);font-size:.95rem}
+.post h2{font-size:1.5rem;margin:2.2rem 0 .6rem}
+.post h3{font-size:1.2rem;color:var(--link);margin:2rem 0 .5rem}
+.post .body > p:first-of-type::first-letter{float:left;font:900 3.6rem/.85 "Fraunces",Georgia,serif;color:var(--rouge-ink);margin:.35rem .5rem 0 0}
+.post ul{padding-left:1.2rem}.post li{margin:.4rem 0}
+
+/* Useless stats */
+.useless{margin:2.5rem 0 1.5rem;background:var(--ice);border:2px dashed var(--bleu);border-radius:16px;padding:1.4rem 1.4rem .8rem;position:relative}
+@media (prefers-color-scheme:dark){.useless{border-color:var(--link)}}
+.useless::before{content:"🙃";position:absolute;top:-1.1rem;right:1rem;font-size:1.8rem;background:var(--paper);padding:0 .3rem}
+.useless header h2{margin:0;font-size:1.35rem;color:var(--link)}
+.useless header p{margin:.2rem 0 1rem;font:600 .78rem "Inter",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--rouge-ink)}
+.useless ol{list-style:none;padding:0;margin:0}
+.useless li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;align-items:baseline;padding:.65rem 0;border-top:1px solid var(--rule)}
+.useless .num{font:900 1.5rem/1.1 "Fraunces",Georgia,serif;color:var(--rouge-ink);text-align:right}
+.useless .what{font-size:1rem}
+@media (max-width:520px){.useless li{grid-template-columns:1fr;gap:.1rem}.useless .num{text-align:left}}
+
+.sources{font:500 .8rem "Inter",system-ui,sans-serif;color:var(--muted)}
+.back{margin:1.5rem 0 0;font:700 .9rem "Inter",system-ui,sans-serif}
+.back a{text-decoration:none}
+footer{max-width:740px;margin:3rem auto 0;padding:1.5rem 16px 3rem;border-top:1px solid var(--rule);display:flex;gap:1rem;align-items:flex-start;font:500 .8rem/1.5 "Inter",system-ui,sans-serif;color:var(--muted)}
+footer img{flex:none;opacity:.85}
+footer p{margin:0 0 .6rem}
+
+/* Navigation between columns */
+.postnav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.5rem 0 0}
+.postnav a{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:1rem 1.1rem;transition:transform .15s,box-shadow .15s}
+.postnav a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.postnav .next{text-align:right;grid-column:2}
+.postnav .dir{font:800 .72rem "Inter",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--rouge-ink)}
+.postnav .t{font:700 1.05rem/1.3 "Fraunces",Georgia,serif}
+.postnav .g{font:600 .78rem "Inter",system-ui,sans-serif;color:var(--muted);letter-spacing:.05em}
+@media (max-width:620px){.postnav{grid-template-columns:1fr}.postnav .next{grid-column:1;text-align:left}}
+.section-title .count{color:var(--rouge-ink)}

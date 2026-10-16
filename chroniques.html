@@ -1,0 +1,22 @@
+---
+layout: default
+title: "Chroniques"
+permalink: /chroniques/
+---
+{% assign latest = site.posts.first %}
+<section class="hero">
+  <img src="{{ '/assets/gaston.svg' | relative_url }}" alt="Gaston Ronchon" width="112" height="112">
+  <div>
+    <p class="kicker"><span lang="fr">La phrase du jour</span><span lang="en">Quote of the day</span></p>
+    {% if latest.quote %}<blockquote class="quote"><span lang="fr">« {{ latest.quote.fr }} »</span><span lang="en">“{{ latest.quote.en }}”</span></blockquote>{% endif %}
+    <p class="lede"><span lang="fr">Chaque matin après un match du Canadien, Gaston chiale, analyse et compte des choses que personne ne devrait compter.</span><span lang="en">Every morning after a Canadiens game, Gaston grumbles, analyzes and counts things no one should count.</span></p>
+  </div>
+  <div class="langswitch" role="group" aria-label="Langue / Language"><button type="button" data-set-lang="fr">FR</button><button type="button" data-set-lang="en">EN</button></div>
+</section>
+{% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+{% for y in years %}
+<h2 class="section-title">{{ y.name }} <span class="count">· {{ y.items.size }}</span></h2>
+<ul class="posts">
+{% for post in y.items %}{% include postcard.html post=post %}{% endfor %}
+</ul>
+{% endfor %}
