@@ -20,11 +20,16 @@
       "Bash(scripts/donnees-match.sh:*)",
       "Bash(./scripts/donnees-match.sh:*)",
       "Bash(scripts/contexte-saison.sh:*)",
-      "Bash(./scripts/contexte-saison.sh:*)"
+      "Bash(./scripts/contexte-saison.sh:*)",
+      "Bash(curl -s https://api-web.nhle.com/v1/:*)",
+      "Bash(curl -fsS https://api-web.nhle.com/v1/:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)"
     ],
     "deny": [
       "Bash(git push --force:*)",
       "Bash(rm:*)"
-    ]
+    ],
+    "defaultMode": "dontAsk"
   }
 }

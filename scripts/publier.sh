@@ -132,7 +132,10 @@ check_post() {
       || fail "$name : l'en-tête n'est pas du YAML valide (guillemets ou indentation ?)"
   else log "Avertissement : impossible de vérifier le YAML (ni PyYAML ni ruby)."
   fi
-  log "Chronique valide : $name"
+  local wfr wen
+  wfr=$(awk '/lang="fr"/{f=1;next} /<\/div>/{f=0} f' "$f" | wc -w | tr -d ' ')
+  wen=$(awk '/lang="en"/{f=1;next} /<\/div>/{f=0} f' "$f" | wc -w | tr -d ' ')
+  log "Chronique valide : $name (mots : FR $wfr · EN $wen)"
 }
 
 cmd_pousser() {

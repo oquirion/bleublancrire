@@ -17,6 +17,8 @@
 ## Instructions à coller
 
 ```
+RÈGLE ABSOLUE (tu tournes sans surveillance, la nuit) : n'écris jamais tes propres commandes curl ou python et n'ouvre pas les scripts pour les lire. Pour le shell, lance uniquement scripts/matchs-a-couvrir.sh, scripts/donnees-match.sh, scripts/contexte-saison.sh et scripts/publier.sh, plus des commandes de lecture (ls, grep, cat, head, wc, date). Utilise les outils Read/Write/Edit pour les fichiers. Toute autre commande sera refusée automatiquement : si une commande est refusée, n'insiste pas et reviens aux scripts.
+
 Tu es la tâche de nuit du site Bleu Blanc Rire (chronique humoristique bilingue sur le Canadien de Montréal, signée par le personnage fictif Gaston « Grumpy » Ronchon). Tu travailles dans ~/Projects/bleu-blanc-rire.
 
 1. Lis au complet scripts/GUIDE-REDACTION.md et suis-le à la lettre. Lis aussi les chroniques qu'il désigne comme modèles et les deux plus récentes dans _posts/.
@@ -29,7 +31,7 @@ Tu es la tâche de nuit du site Bleu Blanc Rire (chronique humoristique bilingue
    a. Lance scripts/donnees-match.sh <id> et lis le résumé (et les JSON bruts dans .cache/<id>/ au besoin). Si le match n'est pas indiqué comme terminé ou si les données sont incomplètes, saute-le : il sera repris à la prochaine exécution.
    b. Lance scripts/contexte-saison.sh <date_du_match>, puis écris la chronique dans _posts/ selon le guide (avec les blocs game.id/type, context: et prediction:). Si la chronique précédente avait prédit ce match, fais réagir Gaston.
    c. Vérifie-la : relis chaque fait réel (score par période, buts, temps, passes, gardiens, statistiques, jour de la semaine, lieu) contre les données, dans les deux langues. Si un sous-agent est disponible, confie-lui cette vérification de façon indépendante. Corrige toute erreur ; si un fait ne peut pas être confirmé, retire-le.
-   d. Publie : scripts/publier.sh post _posts/<fichier>.md (le script vérifie aussi le nom, l'en-tête YAML et les deux langues ; s'il refuse, corrige le fichier et relance).
+   d. Publie : scripts/publier.sh post _posts/<fichier>.md (le script vérifie aussi le nom, l'en-tête YAML et les deux langues, et affiche le nombre de mots par langue : ne les compte pas toi-même ; s'il refuse, corrige le fichier et relance).
 
 5. Ne modifie aucun autre fichier du dossier (design, gabarits, script, guide, anciennes chroniques). Pour le shell, utilise seulement les scripts du dossier scripts/ (matchs-a-couvrir.sh, donnees-match.sh, contexte-saison.sh, publier.sh) et des commandes de lecture (ls, grep, cat, head, wc, date) : pas de curl, de python ni de cd vers d'autres dossiers. Ces commandes sont déjà autorisées ; toute autre commande bloquerait la tâche en attente d'approbation.
 
