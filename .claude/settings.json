@@ -24,7 +24,8 @@
       "Bash(curl -s https://api-web.nhle.com/v1/:*)",
       "Bash(curl -fsS https://api-web.nhle.com/v1/:*)",
       "Bash(git status:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(echo:*)"
     ],
     "deny": [
       "Bash(git push --force:*)",
