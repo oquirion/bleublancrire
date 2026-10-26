@@ -82,7 +82,7 @@ Et là, Winnipeg s'est mis à tirer. De partout. Mark Scheifele à lui seul a ti
 
 À 15:24, **Isak Rosen** finit par battre Fowler, sur des passes de Gabriel Vilardi et de Haydn Fleury. 2-1. Ça a collé au fond, comme je l'avais prévu. Juste un peu.
 
-Puis Josh Anderson prend une punition à 18:28, et Skinner, qui a passé **58:25** devant son filet, finit par laisser sa place pour un attaquant de plus. Les dernières minutes, je ne les ai pas regardées. Je les ai entendues, les yeux fermés, comme on entend sa mère crier « Souper ! » par la fenêtre.
+Josh Anderson prend une punition à 18:28, et dans la dernière minute et demie, Skinner, qui a passé **58:25** devant son filet, laisse sa place à un attaquant de plus. Les dernières minutes, je ne les ai pas regardées. Je les ai entendues, les yeux fermés, comme on entend sa mère crier « Souper ! » par la fenêtre.
 
 Et **Jacob Fowler**, lui, n'est pas rentré souper. **33 arrêts sur 34 tirs**, première étoile. C'était lui, le petit gars qui reste dans les buts quand tout le monde est parti.
 
@@ -137,7 +137,7 @@ Then Winnipeg started shooting. From everywhere. Mark Scheifele alone fired **se
 
 At 15:24, **Isak Rosen** finally beat Fowler, from Gabriel Vilardi and Haydn Fleury. 2–1. It stuck to the bottom, just as I had predicted. Only a little.
 
-Then Josh Anderson went off at 18:28, and Skinner, who spent **58:25** in his crease, eventually gave up his spot for an extra attacker. I did not watch those last minutes. I listened to them with my eyes closed, the way you hear your mother yelling "Supper!" through the window.
+Josh Anderson went off at 18:28, and in the last minute and a half Skinner, who spent **58:25** in his crease, gave up his spot for an extra attacker. I did not watch those last minutes. I listened to them with my eyes closed, the way you hear your mother yelling "Supper!" through the window.
 
 And **Jacob Fowler** did not come in for supper. **33 saves on 34 shots**, first star. He was the kid who stays in net after everyone else has gone home.
 
