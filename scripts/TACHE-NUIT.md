@@ -4,7 +4,7 @@
 1. Dans l'app Claude pour Mac : onglet **Code** → **Routines** → **New routine** → **Local**.
 2. **Dossier** : `~/Projects/bleu-blanc-rire`
 3. **Horaire** : tous les jours à **3 h 45** (heure de Montréal). Facultatif : une 2e exécution vers 9 h 45 comme filet de sécurité. La tâche ne publie jamais deux fois le même match.
-4. **Permissions** : le fichier `.claude/settings.json` du dossier autorise d'avance seulement ce dont la tâche a besoin : les scripts `matchs-a-couvrir.sh`, `donnees-match.sh`, `contexte-saison.sh` et `publier.sh post`, l'écriture dans `_posts/`, et quelques commandes de lecture. Laissez le mode de permission sur **Manual** (ou **Accept edits**) et **Worktree décoché**. Évitez « Bypass permissions ».
+4. **Permissions** : le fichier `.claude/settings.json` du dossier autorise d'avance seulement ce dont la tâche a besoin : les scripts `matchs-a-couvrir.sh`, `donnees-match.sh`, `contexte-saison.sh` et `publier.sh post`, l'écriture dans `_posts/`, et quelques commandes de lecture. Choisissez le mode de permission **Auto** (bouton avec le bouclier, en bas à gauche des instructions) : Claude approuve lui-même les actions sûres et bloque les risquées, sans jamais attendre une approbation la nuit. Laissez **Worktree décoché**. Évitez « Bypass permissions ».
 5. **Instructions** : collez le texte de la section « Instructions à coller » ci-dessous.
 6. Cliquez **Run now** une fois pour tester : sans nouveau match, elle doit répondre « Pas de nouveau match » sans rien modifier.
 
@@ -17,7 +17,7 @@
 ## Instructions à coller
 
 ```
-RÈGLE ABSOLUE (tu tournes sans surveillance, la nuit) : n'écris jamais tes propres commandes curl ou python et n'ouvre pas les scripts pour les lire. Pour le shell, lance uniquement scripts/matchs-a-couvrir.sh, scripts/donnees-match.sh, scripts/contexte-saison.sh et scripts/publier.sh, plus des commandes de lecture (ls, grep, cat, head, wc, date). Utilise les outils Read/Write/Edit pour les fichiers. Toute autre commande sera refusée automatiquement : si une commande est refusée, n'insiste pas et reviens aux scripts.
+RÈGLE ABSOLUE (tu tournes sans surveillance, la nuit) : n'écris jamais tes propres commandes curl ou python et n'ouvre pas les scripts pour les lire. Pour le shell, lance uniquement scripts/matchs-a-couvrir.sh, scripts/donnees-match.sh, scripts/contexte-saison.sh et scripts/publier.sh, plus des commandes de lecture (ls, grep, cat, head, wc, date). Tu es déjà dans le dossier du site : ne commence jamais une commande par « cd » (même vers ~/Projects/bleu-blanc-rire), car « cd » suivi de git ou d'une écriture exige toujours une approbation manuelle et bloque la tâche. Utilise les outils Read/Write/Edit pour modifier les fichiers, jamais sed ou awk. Toute autre commande sera refusée automatiquement : si une commande est refusée, n'insiste pas et reviens aux scripts.
 
 Tu es la tâche de nuit du site Bleu Blanc Rire (chronique humoristique bilingue sur le Canadien de Montréal, signée par le personnage fictif Gaston « Grumpy » Ronchon). Tu travailles dans ~/Projects/bleu-blanc-rire.
 
