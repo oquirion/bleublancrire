@@ -18,10 +18,16 @@ python3 - "$CACHE/schedule.json" "$REPO_DIR/_posts" "$TODAY" <<'PY'
 import json, sys, os, datetime
 sched, posts, today = sys.argv[1], sys.argv[2], sys.argv[3]
 d = json.load(open(sched))
-covered = ""
+import re
+# Un match est couvert seulement s'il est LE match d'une chronique (lien gamecenter/<id>/ dans les sources
+# ou « id: » dans le bloc game:). Les game_id des prédictions ne comptent pas.
+covered = set()
 for f in os.listdir(posts):
     if f.endswith(".md"):
-        covered += open(os.path.join(posts, f), encoding="utf-8").read()
+        t = open(os.path.join(posts, f), encoding="utf-8").read()
+        covered.update(re.findall(r"gamecenter/(\d{10})/", t))
+        m = re.search(r"^game:\n(?:[ \t]+.*\n)*?[ \t]+id:[ \t]*(\d{10})", t, re.M)
+        if m: covered.add(m.group(1))
 t = datetime.date.fromisoformat(today)
 out = []
 for g in d.get("games", []):
