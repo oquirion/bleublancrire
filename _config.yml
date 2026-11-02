@@ -5,4 +5,5 @@ url: "https://oquirion.github.io"
 timezone: America/Toronto
 permalink: /:year/:month/:day/:title/
 markdown: kramdown
+future: true
 exclude: [README.md, scripts, .logs, "Claude outputs"]
